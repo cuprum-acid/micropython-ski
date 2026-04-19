@@ -1,8 +1,6 @@
 import utime
 from machine import Pin, I2C
 
-import ahtx0
-
 # I2C for the Wemos D1 Mini with ESP8266
 i2c = I2C(scl=Pin(21), sda=Pin(19))
 
