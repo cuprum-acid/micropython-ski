@@ -93,7 +93,7 @@ def toggle_led_2(timer_obj):
     LED_2.toggle()
 
 
-def start_sleep_timer(delay_ms=10000):
+def start_sleep_timer(delay_ms=SLEEP_TIME_MS):
     global SLEEP_TIMER
     SLEEP_TIMER.init(mode=Timer.ONE_SHOT, period=delay_ms, callback=go_sleep)
 
@@ -104,6 +104,7 @@ def stop_sleep_timer():
 
 
 def Main():
+    global MODE
     add_irq(BUTTON_DATA_TRANSFER, button_transmit_handler)
     add_irq(BUTTON_PREPARE_RUN, button_prepare_handler)
     add_irq(BUTTON_DOWNHILL, button_downhill_handler)
