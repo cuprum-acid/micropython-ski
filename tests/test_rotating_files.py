@@ -1,7 +1,6 @@
 import os
 
-
-def clear_data_folder():
+def clear_data_folder():   
     DATA_DIR = "/data/"
     MAX_FILES_CNT = 10
     all_files = os.listdir(DATA_DIR)
@@ -15,6 +14,6 @@ def clear_data_folder():
             os.remove(filename)
         except Exception:
             print(f"Error deleting file {file}")
-
+    
 
 clear_data_folder()

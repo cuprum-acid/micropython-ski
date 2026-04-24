@@ -501,22 +501,22 @@ class MicropyGPS(object):
             if self.gps_segments[sats]:
                 try:
                     sat_id = int(self.gps_segments[sats])
-                except (ValueError, IndexError):
+                except (ValueError,IndexError):
                     return False
 
                 try:  # elevation can be null (no value) when not tracking
-                    elevation = int(self.gps_segments[sats + 1])
-                except (ValueError, IndexError):
+                    elevation = int(self.gps_segments[sats+1])
+                except (ValueError,IndexError):
                     elevation = None
 
                 try:  # azimuth can be null (no value) when not tracking
-                    azimuth = int(self.gps_segments[sats + 2])
-                except (ValueError, IndexError):
+                    azimuth = int(self.gps_segments[sats+2])
+                except (ValueError,IndexError):
                     azimuth = None
 
                 try:  # SNR can be null (no value) when not tracking
-                    snr = int(self.gps_segments[sats + 3])
-                except (ValueError, IndexError):
+                    snr = int(self.gps_segments[sats+3])
+                except (ValueError,IndexError):
                     snr = None
             # If no PRN is found, then the sentence has no more satellites to read
             else:
@@ -619,6 +619,7 @@ class MicropyGPS(object):
 
                         # parse the Sentence Based on the message type, return True if parse is clean
                         if self.supported_sentences[self.gps_segments[0]](self):
+
                             # Let host know that the GPS object was updated by returning parsed sentence type
                             self.parsed_sentences += 1
                             return self.gps_segments[0]
@@ -711,8 +712,7 @@ class MicropyGPS(object):
             lat_string = str(formatted_latitude[0]) + '° ' + str(self._latitude[2])
         elif self.coord_format == 'dms':
             formatted_latitude = self.latitude
-            lat_string = str(formatted_latitude[0]) + '° ' + str(formatted_latitude[1]) + "' " + str(
-                formatted_latitude[2]) + '" ' + str(formatted_latitude[3])
+            lat_string = str(formatted_latitude[0]) + '° ' + str(formatted_latitude[1]) + "' " + str(formatted_latitude[2]) + '" ' + str(formatted_latitude[3])
         else:
             lat_string = str(self._latitude[0]) + '° ' + str(self._latitude[1]) + "' " + str(self._latitude[2])
         return lat_string
@@ -727,8 +727,7 @@ class MicropyGPS(object):
             lon_string = str(formatted_longitude[0]) + '° ' + str(self._longitude[2])
         elif self.coord_format == 'dms':
             formatted_longitude = self.longitude
-            lon_string = str(formatted_longitude[0]) + '° ' + str(formatted_longitude[1]) + "' " + str(
-                formatted_longitude[2]) + '" ' + str(formatted_longitude[3])
+            lon_string = str(formatted_longitude[0]) + '° ' + str(formatted_longitude[1]) + "' " + str(formatted_longitude[2]) + '" ' + str(formatted_longitude[3])
         else:
             lon_string = str(self._longitude[0]) + '° ' + str(self._longitude[1]) + "' " + str(self._longitude[2])
         return lon_string
@@ -825,8 +824,7 @@ class MicropyGPS(object):
                            'GNGGA': gpgga, 'GNRMC': gprmc,
                            'GNVTG': gpvtg, 'GNGLL': gpgll,
                            'GNGSA': gpgsa,
-                           }
-
+                          }
 
 if __name__ == "__main__":
     pass

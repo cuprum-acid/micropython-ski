@@ -18,7 +18,7 @@ while True:
         data = gps_module.read(1)  # Read one character at a time
         # Decode the single byte and feed it to the parser
         stat = my_gps.update(chr(data[0]))
-
+        
         # When a full sentence is parsed, 'stat' will contain its type (e.g., 'GPRMC')
         if stat:
             print('Found a sentence:', stat)
